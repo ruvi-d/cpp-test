@@ -1,15 +1,9 @@
 pipeline {
-	agent any
+	agent { docker { image 'gcc:latest' } }
 	stages {
 		stage('Build') {
 			steps {
-				cmakeBuild 
-					buildDir: 'build', 
-					buildType: 'Release', 
-					installation: 'InSearchPath', 
-					steps: [
-						[args: '-j', withCmake: true]
-					]
+				cmakeBuild buildDir: 'build', buildType: 'Release', generator: 'Unix Makefiles', installation: 'InSearchPath', sourceDir: '.'
 			}
 		}
 	}
