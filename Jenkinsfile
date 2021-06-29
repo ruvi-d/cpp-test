@@ -3,7 +3,13 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				cmakeBuild buildDir: 'build', buildType: 'Release', generator: 'Unix Makefiles', installation: 'InSearchPath', sourceDir: '.'
+				sh 'g++ src/main.cpp -o build/hello'
+				archiveArtifacts artifacts: 'build/hello', fingerprint: true
+			}
+		}
+		stage('Test') {
+			steps {
+				sh 'build/hello'
 			}
 		}
 	}
