@@ -1,7 +1,15 @@
 #include <mylib/mylib.hpp>
-#include <gtest/gtest.h>
+#include "CppUTest/TestHarness.h"
+#include "CppUTest/CommandLineTestRunner.h"
+
+TEST_GROUP(myLibTest){};
 
 TEST(myLibTest, testTheAnswer)
 {
-    ASSERT_EQ(MyLib::getAnswer(), 42);
+    CHECK_EQUAL(42,MyLib::getAnswer());
+}
+
+int main(int ac, char** av)
+{
+    return RUN_ALL_TESTS(ac, av);
 }

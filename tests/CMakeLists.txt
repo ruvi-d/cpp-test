@@ -1,4 +1,10 @@
-find_package(GTest REQUIRED)
+find_package(CppUTest REQUIRED)
+
 add_executable(testlib main.cpp)
-target_link_libraries(testlib PRIVATE mylib GTest::GTest GTest::Main)
-gtest_discover_tests(testlib)
+target_link_libraries(testlib 
+                PRIVATE 
+                    mylib 
+                    CppUTest::CppUTest CppUTest::CppUTestExt
+)
+
+add_test(NAME mylibtests COMMAND testlib)
