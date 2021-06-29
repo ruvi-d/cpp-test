@@ -1,4 +1,8 @@
 cmake_minimum_required(VERSION 3.0)
-project (hello)
+project (MyLib)
 
-add_executable(hello src/main.cpp)
+add_library(mylib STATIC src/mylib.cpp)
+target_include_directories(mylib PUBLIC include/)
+
+add_executable(test test/main.cpp)
+target_link_libraries(test PRIVATE mylib)
