@@ -1,8 +1,7 @@
 #include <mylib/mylib.hpp>
-#include <iostream>
+#include <gtest/gtest.h>
 
-int main()
+TEST(myLibTest, testTheAnswer)
 {
-    std::cout << MyLib::getAnswer() << std::endl;
-    return 0;
+    ASSERT_EQ(MyLib::getAnswer(), 42);
 }
