@@ -1,0 +1,6 @@
+[requires]
+mylib/0.2.0@demo/demo
+
+[generators]
+cmake_find_package
+cmake_paths
