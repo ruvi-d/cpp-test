@@ -17,7 +17,7 @@ pipeline {
                 )
 				rtConanRun (
                     clientId: "myConanClient",
-                    command: "create . jenkins/stable -pr /home/conan/.conan/profiles/default --build missing"
+                    command: "create . -pr /home/conan/.conan/profiles/default --build missing"
                 )			
 			}
 		}
