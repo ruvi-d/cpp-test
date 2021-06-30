@@ -1,22 +1,35 @@
 pipeline {
 	agent { docker { image 'conanio/gcc10-armv7hf:latest' } }
+	environment {
+		CONAN_REVISIONS_ENABLED = 1
+	}
 	stages {		
-		stage ('Conan configuration') {
-            steps {
-                rtConanClient (
+		stage('Conan Build') {
+			steps {
+				rtConanClient (
                     id: "myConanClient"
                 )
-            }
-        }
-		stage('Build') {
-			steps {
-				sh 'echo "ruvi here"'
-				sh 'ls'
-				sh 'pwd'
+				rtConanRemote (
+                    name: "myRemoteName",
+                    serverId: "ruvijfrog",
+                    repo: "ruvi-conan",
+                    clientId: "myConanClient"
+                )
 				rtConanRun (
                     clientId: "myConanClient",
-                    command: "create . -pr /home/conan/.conan/profiles/default --build missing"
-                )
+                    command: "create . jenkins/stable -pr /home/conan/.conan/profiles/default --build missing"
+                )			
+			}
+		}
+		stage ('Exec Conan upload and publis') {
+			steps {
+				rtConanRun (
+					clientId: "myConanClient",
+					command: "upload mylib* --all -r myRemoteName --confirm"
+				)
+				rtPublishBuildInfo (
+					serverId: "ruvijfrog"
+				)
 			}
 		}
 	}
