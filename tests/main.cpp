@@ -1,4 +1,4 @@
-#include <mylib/mylib.hpp>
+#include "mylib/mylib.hpp"
 #include "CppUTest/TestHarness.h"
 #include "CppUTest/CommandLineTestRunner.h"
 
