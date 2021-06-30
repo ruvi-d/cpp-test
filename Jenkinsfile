@@ -1,15 +1,22 @@
 pipeline {
-	agent any
-	stages {
+	agent { docker { image 'conanio/gcc10-armv7hf:latest' } }
+	stages {		
+		stage ('Conan configuration') {
+            steps {
+                rtConanClient (
+                    id: "myConanClient"
+                )
+            }
+        }
 		stage('Build') {
 			steps {
-				sh 'g++ src/main.cpp -o build/hello'
-				archiveArtifacts artifacts: 'build/hello', fingerprint: true
-			}
-		}
-		stage('Test') {
-			steps {
-				sh 'build/hello'
+				sh 'echo "ruvi here"'
+				sh 'ls'
+				sh 'pwd'
+				rtConanRun (
+                    clientId: "myConanClient",
+                    command: "create . -pr /home/conan/.conan/profiles/default --build missing"
+                )
 			}
 		}
 	}
