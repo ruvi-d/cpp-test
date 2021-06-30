@@ -1,6 +1,6 @@
 from conans import ConanFile, CMake
 
-class RegexConan(ConanFile):
+class MyLibConan(ConanFile):
     name = "mylib"
     version = "0.2.0"
     settings = "os", "arch", "compiler", "build_type"
@@ -12,7 +12,6 @@ class RegexConan(ConanFile):
     def export_sources(self):
         self.copy("src/*")                 # -> copies all .cpp files from working dir to a "source" dir
         self.copy("tests/*")
-        self.copy("app/*")
         self.copy("include/*")
         self.copy("CMakeLists.txt")
 
