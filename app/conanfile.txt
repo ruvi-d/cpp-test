@@ -1,5 +1,5 @@
 [requires]
-mylib/0.2.0@demo/demo
+mylib/0.2.0
 
 [generators]
 cmake_find_package
