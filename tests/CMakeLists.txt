@@ -3,7 +3,7 @@ find_package(CppUTest REQUIRED)
 add_executable(testlib main.cpp)
 target_link_libraries(testlib 
                 PRIVATE 
-                    mylib 
+                    Ruvi-D::MyLib 
                     CppUTest::CppUTest CppUTest::CppUTestExt
 )
 
