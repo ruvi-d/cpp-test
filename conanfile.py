@@ -2,7 +2,7 @@ from conans import ConanFile, CMake
 
 class MyLibConan(ConanFile):
     name = "mylib"
-    version = "0.3.0"
+    version = "0.3.1"
     settings = "os", "arch", "compiler", "build_type"
     generators = "cmake_find_package", "cmake_paths"
         

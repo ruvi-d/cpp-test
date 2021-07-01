@@ -15,7 +15,6 @@ pipeline {
                     repo: "ruvi-conan",
                     clientId: "myConanClient"
                 )
-				sh 'cat ~/.conan/profiles/default'
 				rtConanRun (
                     clientId: "myConanClient",
                     command: "create . -pr ./profiles/bb_armhf_release --build missing"
