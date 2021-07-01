@@ -2,12 +2,12 @@ from conans import ConanFile, CMake
 
 class MyLibConan(ConanFile):
     name = "mylib"
-    version = "0.2.0"
+    version = "0.3.0"
     settings = "os", "arch", "compiler", "build_type"
     generators = "cmake_find_package", "cmake_paths"
         
-    def requirements(self):
-        self.requires("cpputest/4.0")
+    def build_requirements(self):
+        self.build_requires("cpputest/4.0")
 
     def export_sources(self):
         self.copy("src/*")                 # -> copies all .cpp files from working dir to a "source" dir
