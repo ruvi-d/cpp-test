@@ -12,7 +12,6 @@ class MyLibConan(ConanFile):
     def export_sources(self):
         self.copy("src/*")                 # -> copies all .cpp files from working dir to a "source" dir
         self.copy("tests/*")
-        self.copy("include/*")
         self.copy("CMakeLists.txt")
 
     def build(self):
@@ -21,7 +20,7 @@ class MyLibConan(ConanFile):
         cmake.build()                      # cmake --build .  
 
     def package(self):
-        self.copy("*.hpp", dst="include", src="include")
+        self.copy("*.hpp", dst="include", src="src/include")
         self.copy("*.lib", dst="lib", keep_path=False)
         self.copy("*.dll", dst="bin", keep_path=False)
         self.copy("*.dylib*", dst="lib", keep_path=False)
