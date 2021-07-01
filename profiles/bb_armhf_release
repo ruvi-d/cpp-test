@@ -5,7 +5,7 @@ cxx_compiler=g++
 
 [settings]
 os=Linux
-arch=armv7
+arch=armv7hf
 build_type=Release
 compiler=gcc
 compiler.version=10

@@ -12,6 +12,7 @@ class MyLibConan(ConanFile):
     def export_sources(self):
         self.copy("src/*")                 # -> copies all .cpp files from working dir to a "source" dir
         self.copy("tests/*")
+        self.copy("profiles/*")
         self.copy("CMakeLists.txt")
 
     def build(self):
