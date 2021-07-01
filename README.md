@@ -18,6 +18,13 @@ conan install .. --profile ../../profiles/linux_gcc_10_release
 cmake .. -DCMAKE_BUILD_TYPE=Release
 cmake --build . -- -j
 ```
+### Regular development on src/
+```
+mkdir build && cd build
+conan install .. --profile ../profiles/linux_gcc_10_release
+cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake --build . -- -j
+```
 
 ## Beaglebone Black build
 ### Prerequisites (crosscompiler toolchain)

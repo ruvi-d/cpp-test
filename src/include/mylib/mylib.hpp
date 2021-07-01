@@ -4,6 +4,7 @@
 namespace MyLib
 {
     [[nodiscard]] int getAnswer() noexcept;
+    [[nodiscard]] int echo(int val) noexcept;
 } // namespace MyLib
 
 

@@ -1,10 +1,18 @@
-find_package(CppUTest REQUIRED)
+cmake_minimum_required(VERSION 3.1)
+project(mylibTest CXX)
+
+enable_testing()
+find_package(CppUTest MODULE REQUIRED)
+if(NOT TARGET mylib)
+    find_package(mylib CONFIG REQUIRED)
+endif()
 
 add_executable(testlib main.cpp)
 target_link_libraries(testlib 
-                PRIVATE 
-                    mylib 
-                    CppUTest::CppUTest CppUTest::CppUTestExt
+    PRIVATE 
+        mylib 
+        CppUTest::CppUTest
+        CppUTest::CppUTestExt
 )
 
-add_test(NAME mylibtests COMMAND testlib)
+add_test(NAME mylib.unit_tests COMMAND testlib)

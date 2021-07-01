@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.11...3.20)
-project(OutOFSourcePackageTest CXX)
+cmake_minimum_required(VERSION 3.12)
+project(OutOfSourcePackageTest CXX)
 
 include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
 find_package(mylib REQUIRED)
