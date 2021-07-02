@@ -7,12 +7,12 @@ if(NOT TARGET mylib)
     find_package(mylib CONFIG REQUIRED)
 endif()
 
-add_executable(testlib main.cpp)
-target_link_libraries(testlib 
+add_executable(unit_test_lib main.cpp)
+target_link_libraries(unit_test_lib 
     PRIVATE 
         mylib 
         CppUTest::CppUTest
         CppUTest::CppUTestExt
 )
 
-add_test(NAME mylib.unit_tests COMMAND testlib)
+add_test(NAME mylib.unit_tests COMMAND unit_test_lib)
