@@ -2,13 +2,13 @@ from conans import ConanFile, CMake, tools
 
 class MyLibConan(ConanFile):
     name = "mylib"
-    version = "0.5.0"
+    version = "0.5.1"
     description = "An example project with CMake and conan"
     license = "https://github.com/ruvi-d/cpp-test/blob/main/LICENSE"
     url = "https://github.com/ruvi-d/cpp-test"
     exports = ["LICENSE"]
     settings = "os", "arch", "compiler", "build_type"
-    generators = "cmake_find_package", "cmake_paths"
+    generators = "cmake_find_package", "cmake_paths", "cmake"
         
     def build_requirements(self):
         self.build_requires("cpputest/4.0")
