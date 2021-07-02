@@ -12,7 +12,7 @@ endif()
 add_executable(unit_test_lib main.cpp)
 target_link_libraries(unit_test_lib 
     PRIVATE 
-        mylib 
+        Ruvi-D::mylib 
         CppUTest::CppUTest
         CppUTest::CppUTestExt
 )

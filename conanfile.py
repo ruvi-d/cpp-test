@@ -2,7 +2,7 @@ from conans import ConanFile, CMake, tools
 
 class MyLibConan(ConanFile):
     name = "mylib"
-    version = "0.4.1"
+    version = "0.5.0"
     description = "An example project with CMake and conan"
     license = "https://github.com/ruvi-d/cpp-test/blob/main/LICENSE"
     url = "https://github.com/ruvi-d/cpp-test"
@@ -13,6 +13,12 @@ class MyLibConan(ConanFile):
     def build_requirements(self):
         self.build_requires("cpputest/4.0")
 
+    def _configure_cmake(self):
+        cmake = CMake(self)                 # CMake helper auto-formats CLI arguments for CMake
+        #cmake.definitions["SOME_DEFINITION"] = "VALUE"
+        cmake.configure()                   # cmake -DCMAKE_TOOLCHAIN_FILE=conantoolchain.cmake
+        return cmake
+
     def export_sources(self):
         self.copy("src/*")                 # -> copies all .cpp files from working dir to a "source" dir
         self.copy("tests/*")
@@ -20,21 +26,14 @@ class MyLibConan(ConanFile):
         self.copy("CMakeLists.txt")
 
     def build(self):
-        cmake = CMake(self)                # CMake helper auto-formats CLI arguments for CMake
-        cmake.configure()                  # cmake -DCMAKE_TOOLCHAIN_FILE=conantoolchain.cmake
+        cmake = self._configure_cmake()
         cmake.build()                      # cmake --build .  
         if not tools.cross_building(self):
             cmake.test()
 
     def package(self):
-        self.copy("*.hpp", dst="include", src="src/include")
-        self.copy("*.lib", dst="lib", keep_path=False)
-        self.copy("*.dll", dst="bin", keep_path=False)
-        self.copy("*.dylib*", dst="lib", keep_path=False)
-        self.copy("*.so", dst="lib", keep_path=False)
-        self.copy("*.a", dst="lib", keep_path=False)
+        cmake = self._configure_cmake()
+        cmake.install()
 
     def package_info(self):
         self.cpp_info.libs = ["mylib"]
-        self.cpp_info.includedirs = ["include"]
-        self.cpp_info.libsdirs = ["lib"]

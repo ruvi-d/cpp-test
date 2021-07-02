@@ -13,3 +13,19 @@ target_compile_features(mylib PUBLIC cxx_std_17)
 target_include_directories(mylib PUBLIC 
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>)
+
+add_library(Ruvi-D::mylib ALIAS mylib)
+
+install(TARGETS mylib EXPORT mylibTargets
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
+        RUNTIME DESTINATION bin
+        INCLUDES DESTINATION include)
+
+install(EXPORT mylibTargets
+        DESTINATION lib/cmake/mylib
+        FILE mylibTargets.cmake
+        NAMESPACE Ruvi-D::)
+
+install(DIRECTORY include/mylib
+        DESTINATION include)
