@@ -3,6 +3,10 @@ from conans import ConanFile, CMake, tools
 class MyLibConan(ConanFile):
     name = "mylib"
     version = "0.4.1"
+    description = "An example project with CMake and conan"
+    license = "https://github.com/ruvi-d/cpp-test/blob/main/LICENSE"
+    url = "https://github.com/ruvi-d/cpp-test"
+    exports = ["LICENSE"]
     settings = "os", "arch", "compiler", "build_type"
     generators = "cmake_find_package", "cmake_paths"
         
