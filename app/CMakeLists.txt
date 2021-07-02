@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
 project(OutOfSourcePackageTest CXX)
 
-include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
+include(${CMAKE_BINARY_DIR}/conan_paths.cmake OPTIONAL)
 find_package(mylib REQUIRED)
 
 add_executable(testapp main.cpp)

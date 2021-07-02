@@ -3,16 +3,18 @@ project(mylibTest CXX)
 
 enable_testing()
 find_package(CppUTest MODULE REQUIRED)
+
 if(NOT TARGET mylib)
+    include(${CMAKE_BINARY_DIR}/conan_paths.cmake OPTIONAL)
     find_package(mylib CONFIG REQUIRED)
 endif()
 
-add_executable(testlib main.cpp)
-target_link_libraries(testlib 
+add_executable(unit_test_lib main.cpp)
+target_link_libraries(unit_test_lib 
     PRIVATE 
-        mylib 
+        Ruvi-D::mylib 
         CppUTest::CppUTest
         CppUTest::CppUTestExt
 )
 
-add_test(NAME mylib.unit_tests COMMAND testlib)
+add_test(NAME mylib.unit_tests COMMAND unit_test_lib)

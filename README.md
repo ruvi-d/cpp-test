@@ -11,6 +11,11 @@ cmake .. -DCMAKE_BUILD_TYPE=Release
 cmake --build . -- -j
 ctest
 ```
+### To build with conan
+```
+conan install . -pr profiles/linux_gcc_10_release --install-folder build
+conan build . --build-folder build
+```
 ### To build out of source test app
 ```
 cd app && mkdir build && cd build
