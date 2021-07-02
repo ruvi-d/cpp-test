@@ -1,8 +1,8 @@
-from conans import ConanFile, CMake
+from conans import ConanFile, CMake, tools
 
 class MyLibConan(ConanFile):
     name = "mylib"
-    version = "0.4.0"
+    version = "0.4.1"
     settings = "os", "arch", "compiler", "build_type"
     generators = "cmake_find_package", "cmake_paths"
         
@@ -19,6 +19,8 @@ class MyLibConan(ConanFile):
         cmake = CMake(self)                # CMake helper auto-formats CLI arguments for CMake
         cmake.configure()                  # cmake -DCMAKE_TOOLCHAIN_FILE=conantoolchain.cmake
         cmake.build()                      # cmake --build .  
+        if not tools.cross_building(self):
+            cmake.test()
 
     def package(self):
         self.copy("*.hpp", dst="include", src="src/include")
