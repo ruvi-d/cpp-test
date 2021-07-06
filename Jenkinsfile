@@ -21,7 +21,7 @@ pipeline {
                 )			
 			}
 		}
-		stage ('Exec Conan upload and publis') {
+		stage ('Exec Conan upload and publish') {
 			steps {
 				rtConanRun (
 					clientId: "myConanClient",

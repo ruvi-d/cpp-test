@@ -1,12 +1,12 @@
 ## Linux build
 ### To build conan package
 ```
-conan create . demo/demo -pro profiles/linux_gcc_10_release
+conan create . demo/demo -pr profiles/linux_gcc_10_release
 ```
 ### To build with cmake
 ```
 mkdir build && cd build
-conan install .. -pro ../profiles/linux_gcc_10_release
+conan install .. -pr ../profiles/linux_gcc_10_release
 cmake .. -DCMAKE_BUILD_TYPE=Release
 cmake --build . -- -j
 ctest

@@ -2,7 +2,7 @@ from conans import ConanFile, CMake, tools
 
 class MyLibConan(ConanFile):
     name = "mylib"
-    version = "0.5.1"
+    version = "0.5.2"
     description = "An example project with CMake and conan"
     license = "https://github.com/ruvi-d/cpp-test/blob/main/LICENSE"
     url = "https://github.com/ruvi-d/cpp-test"
