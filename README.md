@@ -33,14 +33,14 @@ conan create . user/test -pr profiles/bb_armhf_release
 ### To build with CMake
 ```
 mkdir build-arm
-conan install . -pr ../profiles/bb_armhf_release --b missing --install-folder build-arm
+conan install . -pr profiles/bb_armhf_release -b missing -if build-arm
 cmake . -B build-arm/ -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=arm-linux-gnueabihf-g++ -DCMAKE_C_COMPILER=arm-linux-gnueabihf-gcc
 cmake --build build-arm/ -- -j
 ```
 ### To build out of source test app
 ```
 cd app && mkdir build-arm
-conan install . -pr ../profiles/bb_armhf_release --install-folder build-arm
+conan install . -pr ../profiles/bb_armhf_release -if build-arm
 cmake . -B build-arm/ -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=arm-linux-gnueabihf-g++
 cmake --build build-arm/ -- -j
 ```

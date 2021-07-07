@@ -1,4 +1,4 @@
-target_host=arm-linux-gnueabihf
+target_host=arm-cortex_a8-linux-gnueabihf
 cc_compiler=gcc
 cxx_compiler=g++
 
@@ -7,7 +7,7 @@ os=Linux
 arch=armv7hf
 build_type=Release
 compiler=gcc
-compiler.version=10
+compiler.version=11.1
 compiler.libcxx=libstdc++11
 
 [env]

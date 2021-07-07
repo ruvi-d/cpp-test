@@ -1,4 +1,5 @@
 build/
 build-bb/
+build-arm/
 .vscode/
 tmp/
