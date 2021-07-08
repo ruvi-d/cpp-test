@@ -7,8 +7,8 @@ os=Linux
 arch=armv7hf
 build_type=Release
 compiler=gcc
-compiler.version=11.1
-compiler.libcxx=libstdc++11
+compiler.version=11
+compiler.libcxx=libstdc++
 
 [env]
 CHOST=$target_host
