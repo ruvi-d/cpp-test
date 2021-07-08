@@ -1,0 +1,14 @@
+cc_compiler=clang-12
+cxx_compiler=clang++-12
+
+[settings]
+os=Linux
+arch=armv7hf
+build_type=Release
+compiler=clang
+compiler.version=12
+compiler.libcxx=libstdc++11
+
+[env]
+CC=$cc_compiler
+CXX=$cxx_compiler
