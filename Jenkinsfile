@@ -17,7 +17,7 @@ pipeline {
                 )
 				rtConanRun (
                     clientId: "myConanClient",
-                    command: "create . -pr ./profiles/bb_armhf_release --build missing"
+                    command: "create . -pr ./conan-profiles/arm_gcc_gnueabihf --build missing"
                 )			
 			}
 		}
