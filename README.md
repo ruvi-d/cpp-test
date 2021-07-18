@@ -1,7 +1,7 @@
 ## Build conan package
-### Native GCC-10 build
+### Native GCC build
 ```console
-$ conan create . user/test -pr conan-profiles/x86_64_gcc_10 -b missing
+$ conan create . user/test -pr conan-profiles/x86_64_gcc_9 -b missing
 ```
 ### Native clang-11 build
 ```console
@@ -18,10 +18,10 @@ $ conan create . user/test -pr conan-profiles/arm_gcc_cortex_a8 -b missing
 
 ## Build out-of-source test app
 Assuming that mylib has been uploaded to local cache or remote
-### Native GCC-10 build
+### Native GCC build
 ```console
 $ cd app && mkdir build
-$ conan install . -pr ../conan-profiles/x86_64_gcc_10 -if build
+$ conan install . -pr ../conan-profiles/x86_64_gcc_9 -if build
 $ cmake . -B build -DCMAKE_BUILD_TYPE=Release
 $ cmake --build build/
 ```
